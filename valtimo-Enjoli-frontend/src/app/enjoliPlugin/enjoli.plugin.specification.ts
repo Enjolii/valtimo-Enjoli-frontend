@@ -3,6 +3,9 @@ import {EnjoliPluginConfigurationComponent} from './models/enjoli-plugin-configu
 import {SAMPLE_PLUGIN_LOGO_BASE64} from '../plugin/assets';
 import {EnjoliActionConfigurationComponent} from './components/create-object/enjoli-action-configuration.component';
 import {PrintActionConfigurationComponent} from './components/print-action/print-action-configuration.component';
+import {DeleteActionConfigurationComponent} from './components/delete-object/delete-action-configuration.component';
+import {UpdateActionConfigurationComponent} from './components/update-object/update-action-configuration.component';
+import {GetActionConfigurationComponent} from './components/get-object/get-action-configuration.component';
 
 const enjoliPluginSpecification: PluginSpecification = {
   /*
@@ -23,7 +26,10 @@ const enjoliPluginSpecification: PluginSpecification = {
      These are used to configure each plugin action.
      */
     'enjoli-action': EnjoliActionConfigurationComponent,
-    'print-action': PrintActionConfigurationComponent
+    'print-action': PrintActionConfigurationComponent,
+    'delete-action': DeleteActionConfigurationComponent,
+    'update-action': UpdateActionConfigurationComponent,
+    'get-action': GetActionConfigurationComponent,
   },
   /*
   For each language key an implementation supports, translation keys with a translation are provided below.
@@ -35,10 +41,20 @@ const enjoliPluginSpecification: PluginSpecification = {
     nl: {
       title: 'Plugin van Enjoli',
       description: 'De mega coole plugin van Enjoli',
+      'enjoli-action': 'Aanmaak actie',
+      'print-action': 'Print actie',
+      'delete-action': 'Verwijder actie',
+      'update-action': 'Update actie',
+      'get-action': 'Ophaal actie',
     },
     en: {
       title: 'Plugin by Enjoli',
       description: 'The mega cool plugin by Enjoli',
+      'enjoli-action': 'Create action',
+      'print-action': 'Print action',
+      'delete-action': 'Delete action',
+      'update-action': 'Update action',
+      'get-action': 'Get action',
     }
   }
 };

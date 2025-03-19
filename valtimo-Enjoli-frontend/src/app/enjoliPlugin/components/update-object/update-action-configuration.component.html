@@ -6,6 +6,15 @@
     } as obs"
 >
   <v-input
+          name="uuid"
+          [title]="'Uuid' | pluginTranslate: pluginId | async"
+          [margin]="true"
+          [defaultValue]="obs.prefill?.uuid"
+          [disabled]="obs.disabled"
+          [required]="true"
+  >
+  </v-input>
+  <v-input
           name="type"
           [title]="'ObjectType' | pluginTranslate: pluginId | async"
           [margin]="true"

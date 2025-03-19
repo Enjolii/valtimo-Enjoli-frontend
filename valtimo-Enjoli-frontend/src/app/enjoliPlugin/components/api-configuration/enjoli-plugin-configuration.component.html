@@ -14,4 +14,13 @@
           [required]="true"
   >
   </v-input>
+  <v-input
+          name="apiUrl"
+          [title]="'Api Url' | pluginTranslate: pluginId | async"
+          [margin]="true"
+          [defaultValue]="obs.prefill?.apiUrl"
+          [disabled]="obs.disabled"
+          [required]="true"
+  >
+  </v-input>
 </v-form>

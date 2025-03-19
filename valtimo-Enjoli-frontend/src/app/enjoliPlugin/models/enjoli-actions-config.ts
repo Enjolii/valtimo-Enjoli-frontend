@@ -1,14 +1,26 @@
 interface EnjoliActionsConfig {
-  apiUrl: string;
   type: string;
   gamedata: string;
   filmdata: string;
 }
 
-export {EnjoliActionsConfig};
-
 interface PrintActionConfig {
   print: string;
 }
 
-export {PrintActionConfig};
+interface DeleteActionConfig {
+  uuid: string;
+}
+
+interface GetActionConfig {
+  uuid: string;
+}
+
+interface UpdateActionConfig {
+  uuid: string;
+  type: string;
+  gamedata: string;
+  filmdata: string;
+}
+
+export {EnjoliActionsConfig, PrintActionConfig, DeleteActionConfig, GetActionConfig, UpdateActionConfig};

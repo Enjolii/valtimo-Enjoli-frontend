@@ -130,6 +130,8 @@ export function tabsFactory() {
     AccessControlManagementModule,
     SamplePluginModule,
     EnjoliPluginModule,
+    ObjectModule,
+    ObjectManagementModule,
     HttpClientModule, TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

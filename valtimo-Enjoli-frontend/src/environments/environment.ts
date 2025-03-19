@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 import {NgxLoggerLevel} from 'ngx-logger';
-import {ROLE_ADMIN, ROLE_DEVELOPER, ROLE_USER, ValtimoConfig, UploadProvider, IncludeFunction} from '@valtimo/config';
+import {IncludeFunction, ROLE_ADMIN, ROLE_DEVELOPER, ROLE_USER, UploadProvider, ValtimoConfig} from '@valtimo/config';
 import {authenticationKeycloak} from './auth/keycloak-config';
 import {defaultDefinitionColumns} from './columns';
 import {DARK_MODE_LOGO_BASE_64, LOGO_BASE_64} from './logo';
@@ -17,7 +17,13 @@ export const environment: ValtimoConfig = {
       {roles: [ROLE_USER], link: ['/'], title: 'Dashboard', iconClass: 'icon mdi mdi-view-dashboard', sequence: 0},
       {roles: [ROLE_USER], title: 'Dossiers', iconClass: 'icon mdi mdi-layers', sequence: 1, children: []},
       {roles: [ROLE_USER], link: ['/tasks'], title: 'Tasks', iconClass: 'icon mdi mdi-check-all', sequence: 2},
-      {roles: [ROLE_ADMIN], title: 'Objects', iconClass: 'icon mdi mdi-archive', sequence: 3, includeFunction: IncludeFunction.ObjectManagementEnabled,},
+      {
+        roles: [ROLE_ADMIN],
+        title: 'Objects',
+        iconClass: 'icon mdi mdi-archive',
+        sequence: 3,
+        includeFunction: IncludeFunction.ObjectManagementEnabled,
+      },
       {roles: [ROLE_USER], link: ['/analysis'], title: 'Analysis', iconClass: 'icon mdi mdi-chart-bar', sequence: 4},
       {
         roles: [ROLE_ADMIN], title: 'Admin', iconClass: 'icon mdi mdi-tune', sequence: 5, children: [
@@ -39,6 +45,23 @@ export const environment: ValtimoConfig = {
           {link: ['/case-migration'], title: 'Case migration (beta)', sequence: 16},
           {link: ['/process-migration'], title: 'Process migration', sequence: 17},
           {link: ['/choice-fields'], title: 'Choice fields', sequence: 18},
+          {
+            roles: [
+              ROLE_ADMIN
+            ],
+            title: 'Admin',
+            iconClass: 'icon mdi mdi-tune',
+            sequence: 6,
+            children: [
+              {
+                link: [
+                  '/object-management'
+                ],
+                title: 'Objects',
+                sequence: 1
+              }
+            ]
+          },
         ]
       },
       {
@@ -89,7 +112,8 @@ export const environment: ValtimoConfig = {
     enableCompactModeToggle: true,
     enableUserNameInTopBarToggle: true,
     enableIntermediateSave: true,
-    enableTaskPanel: true
+    enableTaskPanel: true,
+    enableObjectManagement: true
   }
 };
 

@@ -1,26 +1,26 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FunctionConfigurationComponent} from '@valtimo/plugin';
 import {BehaviorSubject, combineLatest, Observable, Subscription, take} from 'rxjs';
-import {EnjoliActionsConfig} from '../../models';
+import {UpdateActionConfig} from '../../models';
 
 @Component({
-  selector: 'enjoli-action-configuration',
-  templateUrl: './enjoli-action-configuration.component.html',
+  selector: 'update-action-configuration',
+  templateUrl: './update-action-configuration.component.html',
 })
-export class EnjoliActionConfigurationComponent
+export class UpdateActionConfigurationComponent
   // The component explicitly implements the FunctionConfigurationComponent interface
   implements FunctionConfigurationComponent, OnInit, OnDestroy {
   @Input() save$: Observable<void>;
   @Input() disabled$: Observable<boolean>;
   @Input() pluginId: string;
-  @Input() prefillConfiguration$: Observable<EnjoliActionsConfig>;
+  @Input() prefillConfiguration$: Observable<UpdateActionConfig>;
   @Output() valid: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() configuration: EventEmitter<EnjoliActionsConfig> =
-    new EventEmitter<EnjoliActionsConfig>();
+  @Output() configuration: EventEmitter<UpdateActionConfig> =
+    new EventEmitter<UpdateActionConfig>();
 
   private saveSubscription!: Subscription;
 
-  private readonly formValue$ = new BehaviorSubject<EnjoliActionsConfig | null>(null);
+  private readonly formValue$ = new BehaviorSubject<UpdateActionConfig | null>(null);
   private readonly valid$ = new BehaviorSubject<boolean>(false);
 
   ngOnInit(): void {
@@ -31,13 +31,13 @@ export class EnjoliActionConfigurationComponent
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: EnjoliActionsConfig): void {
+  formValueChange(formValue: UpdateActionConfig): void {
     this.formValue$.next(formValue);
     this.handleValid(formValue);
   }
 
-  private handleValid(formValue: EnjoliActionsConfig): void {
-    const valid = !!(formValue.type && formValue.filmdata && formValue.gamedata);
+  private handleValid(formValue: UpdateActionConfig): void {
+    const valid = !!(formValue.uuid && formValue.type && formValue.filmdata && formValue.gamedata);
 
     this.valid$.next(valid);
     this.valid.emit(valid);
